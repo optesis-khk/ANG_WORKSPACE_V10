@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_purchase_order_template">
+            <t t-call="optesis_purchase_reports.modern-feelings-page-layout">
+                <div id="invoice-details">
+                    <div>
+                        <table style="width:500px">
+                                        <tr>
+                                            <td>
+                                                <tr>
+                                                    <td style="border-right:1px grey solid">Références</td>
+                                                    <td style="padding-right:5px;text-align:left">
+                                                        <span t-field="o.partner_ref"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border-right:1px grey solid">Fournisseur</td>
+                                                    <td style="padding-left:5px;text-align:left">
+                                                        <span t-field="o.partner_id.name"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border-right:1px grey solid">Service demandeur</td>
+                                                    <td style="padding-left:5px;text-align:left">
+                                                        <span t-field="o.service_id"/>
+                                                    </td>
+                                                </tr>
+                                            </td>
+                                        </tr>
+                                    </table>
+                        <!--<span style="height:30px;padding-left:10px;font-weight:bold">Références: </span><span t-field="o.partner_ref"/><br/>-->
+                        <!--<span style="height:30px;padding-left:10px;font-weight:bold">Fournisseur: </span><span t-field="o.partner_id.name"/><br/>-->
+                        <!--<span style="height:30px;padding-left:10px;font-weight:bold">Service demandeur:</span> <span t-field="o.service_id"/>-->
+                    </div>
+                <div class="row">
+                <div style="border-right:1px solid;border-left:1px solid;border-top:1px solid;padding:2px;min-height:710px">
+                    <table class="table table-condensed table-bordered border-bottom:1px solid" style="border:1px solid;table-layout: fixed;">
+                        <thead>
+                            <tr>
+                                <td class="description-title">DESIGNATION</td>
+                                <td class="quantity-title">UNITE</td>
+                                <td class="quantity-title">QUANTITE</td>
+                                <td class="price-title">PRIX UNITAIRE</td>
+                                <td class="total-title">MONTANT</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr t-foreach="o.order_line" t-as="l">
+                                <td style="border-right:1px solid grey;height:20px">
+                                    <span t-field="l.product_id"></span>
+                                </td>
+                                <td style="border-right:1px solid grey;text-align:center">
+                                    ---
+                                </td>
+                                <td style="text-align:center;border-right:1px solid grey">
+                                    <span t-field="l.product_qty"></span>
+                                </td>
+                                <td style="text-align:right;border-right:1px solid grey">
+                                    <span t-field="l.price_unit"/>
+                                </td>
+                                <td>
+                                    <span t-field="l.price_subtotal"
+                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    </div>
+                    <div style="padding-bottom:2px;padding-top:2px">
+                    <table>
+                    <tr style="border:1px solid;">
+                        <td style="font-weight: bold;font-style: italic">TOTAL</td>
+                        <td style="font-weight: bold;font-style: italic">
+                                    <span t-field="o.amount_total"
+                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                            </tr>
+                    </table>
+                    </div>
+                    <div style="border-top:1px solid">
+                        <span style="font-weight: bold">Arrété le présent Bon de Commande à la somme de: </span><span t-field="o.amount_text"></span>
+                    </div>
+                 <div style="display: table-cell;padding-top:20px;">
+                        <div style="display: table-cell;font-weight: bold"><span><u>Le Chef du Service Administratif et Financier</u></span></div>
+                        <div style="display: table-cell;padding-left:95px;font-weight: bold"><span><u>Le Contrôleur de Gestion</u></span></div>
+                        <div style="display: table-cell;padding-left:240px;font-weight: bold"><span><u>Le Directeur</u></span></div>
+                    </div>
+                </div>
+                </div>
+            </t>
+        </template>
+        <template id="report_purchase_order">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="optesis_purchase_reports.report_purchase_order_template" t-lang="o.partner_id.lang" />
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

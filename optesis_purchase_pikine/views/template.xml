@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="modern-feelings-page-layout">
+            <div class="page" id="modern-feelings-page">
+                <t t-call="optesis_purchase_pikine.modern_feelings_layout_header"/>
+                <t t-raw="0"/>
+            </div>
+            <t t-call="optesis_purchase_pikine.modern-feelings-footer"/>
+        </template>
+        <template id="modern_feelings_layout_header">
+            <div id="company">
+                <div style="text-align: left;width:40%;display: table-cell;">
+                    <span style="font-size: 12px;font-weight:bold;padding-left:50px">REPUBLIQUE DU SENEGAL</span> <br/>
+                    <span style="font-size: 12px;font-weight: bold;padding-left:35px">UN PEUPLE - UN BUT - UNE FOI</span><br/>
+                    <span style="font-size: 12px;font-weight: bold;padding-left:20px">MINISTERE DE LA SANTE ET DE L'ACTION SOCIALE</span><br/>
+                    <span style="font-size: 12px;font-weight: bold;padding-left:20px"><span t-field="o.company_id.name" /></span><br/>
+                    <span style="font-size: 12px;padding-left:20px"><span t-field="o.company_id.street" /></span><br/>
+                    <span style="font-size: 12px;font-weight: bold;padding-left:20px">Tel: <span t-field="o.company_id.phone" /></span>-<span style="font-size: 12px;font-weight: bold">Email: <span t-field="o.company_id.email" /></span><br/>
+
+                </div>
+                <div id="company-address" style="display: table-cell;padding-right:20px">
+                        <div><span style="font-weight: bold;padding-left:300px">Pikine le </span><span t-esc="time.strftime('%Y-%m-%d')"
+                                  t-options='{"widget": "date"}'/></div>
+                        <div style="border:1px solid;float:right">
+                            <table style="font-size:14px">
+                            <tr>
+                                <td colspan="3" style="border-bottom:1px solid;text-align:center">CONTROLE DE GESTION</td>
+                            </tr>
+                            <tr>
+                                <td style="border-bottom:1px solid;text-align:left;border-right:1px solid;">GESTION</td>
+                                <td colspan="2" style="border-bottom:1px solid;text-align:center"></td>
+                            </tr>
+                            <tr>
+                                <td style="border-bottom:1px solid;border-right:1px solid;text-align:left">BUDGET</td>
+                                <td style="border-bottom:1px solid;text-align:center;border-right:1px solid;">F</td>
+                                <td style="border-bottom:1px solid;text-align:center">I</td>
+                            </tr>
+                            <tr>
+                                <td style="border-bottom:1px solid;text-align:left;border-right:1px solid;">IMPUTATION</td>
+                                <td colspan="2" style="border-bottom:1px solid;text-align:center"></td>
+                            </tr>
+                            <tr>
+                                <td style="border-bottom:1px solid;text-align:left;border-right:1px solid;">TYPE DE DEPENSE</td>
+                                <td style="border-bottom:1px solid;text-align:left;border-right:1px solid;">MARCHE</td>
+                                <td style="border-bottom:1px solid;text-align:left">Enr. S</td>
+                            </tr>
+                            <tr>
+                                <td style="border-bottom:1px solid;text-align:left;border-right:1px solid;">PREVISION</td>
+                                <td colspan="2" style="border-bottom:1px solid;text-align:center">MARCHE</td>
+                            </tr>
+                            <tr>
+                                <td style="border-bottom:1px solid;text-align:left;border-right:1px solid;">ENGAGEMENT ANT</td>
+                                <td colspan="2" style="border-bottom:1px solid;text-align:center"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;border-right:1px solid;">DISPONIBLE</td>
+                                <td colspan="2" style="text-align:center"></td>
+                            </tr>
+                        </table>
+
+                </div>
+                </div>
+
+                <div style="font-weight: bold;padding-left:300px">
+                    <div style="border:1px solid;margin:2px;padding:2px;width:302px">
+                        <div style="border:1px solid;width:300px;text-align: center;padding-top:20px">
+                            <span style="font-size: 19px;font-weight: bold;">BON DE COMMANDE</span><br/><br/>
+                        </div>
+                    </div>
+                    <span style="font-size: 17px;font-weight: bold;color:red;padding-left:120px"><span t-field="o.name" /></span>
+                </div>
+            </div>
+        </template>
+
+        <template id="modern-feelings-footer">
+            <div class="footer">
+                <span style="text-align:center">
+                        <i>
+                            <div>
+                                <span class="page"/>
+                                /
+                                <span class="topage"/>
+                            </div>
+                        </i>
+                    </span>
+            </div>
+        </template>
+    </data>
+</odoo>
